@@ -1,0 +1,15 @@
+name = "GPI2"
+uuid = "25b41d81-8c24-4365-b92c-8a77f3140560"
+authors = ["Michael Schlottke-Lakemper <michael@sloede.com>"]
+version = "0.1.0"
+
+[deps]
+CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
+GPI2_jll = "d76a2189-2e02-5a22-8cef-0a1b769a99b9"
+Preferences = "21216c6a-2e73-6563-6e65-726566657250"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+
+[compat]
+CEnum = "0.4"
+Preferences = "1"
+Reexport = "1"
