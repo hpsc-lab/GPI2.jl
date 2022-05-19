@@ -1,8 +1,6 @@
 # GPI2.jl
 
-**NOTE: This repository has been archived in favor of https://github.com/hlrs-tasc/GPI2.jl.**
-
-[![Build Status](https://github.com/sloede/GPI2.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/sloede/GPI2.jl/actions/workflows/ci.yml)
+[![Build Status](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -19,12 +17,12 @@ restricted to this platform.
 At the time of writing, GPI2.jl is not a registered package. Thus to install it
 in your default environment, execute the following command:
 ```shell
-julia -e 'using Pkg; Pkg.add("https://github.com/sloede/GPI2.jl.git")'
+julia -e 'using Pkg; Pkg.add("https://github.com/hlrs-tasc/GPI2.jl.git")'
 ```
 Alternatively, you can also just clone this repository and then instantiate it,
 i.e., installing all dependencies:
 ```shell
-git clone https://github.com/sloede/GPI2.jl.git
+git clone https://github.com/hlrs-tasc/GPI2.jl.git
 julia --project=GPI2.jl -e 'using Pkg; Pkg.instantiate()'
 ```
 If you decide to use the latter approach with a cloned `GPI2.jl` directory, in
