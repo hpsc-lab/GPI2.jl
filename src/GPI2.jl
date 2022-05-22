@@ -1,8 +1,8 @@
 module GPI2
 
+using GPI2_jll
 using Preferences: load_preference, @set_preferences!
 using Reexport: @reexport
-using GPI2_jll
 
 export gaspi_logger, gaspi_run
 
@@ -11,6 +11,15 @@ const libGPI2 = load_preference(GPI2, "libGPI2", GPI2_jll.libGPI2)
 const gaspi_logger_executable = load_preference(GPI2, "gaspi_logger_executable", GPI2_jll.gaspi_logger_path)
 const gaspi_run_executable = load_preference(GPI2, "gaspi_run_executable", GPI2_jll.gaspi_run_path)
 const bindings_file = load_preference(GPI2, "bindings_file", "LibGPI2.jl")
+
+
+# If the bindings file is not referring to the package-provided file, check for its existence
+@static if isabspath(bindings_file) && !isfile(bindings_file)
+  @error "Bindings file '$bindings_file' is missing. Please reset using `GPI2.use_jll_bindings()` and restart Julia.\nUntil then, GPI2.jl remains inoperable."
+else
+  include(bindings_file)
+  @reexport using .LibGPI2
+end
 
 
 function use_jll_library()
@@ -72,15 +81,6 @@ function gaspi_run()
       exit()
     end
   end
-end
-
-
-# If the bindings file is not referring to the package-provided file, check for its existence
-@static if isabspath(bindings_file) && !isfile(bindings_file)
-  @error "Bindings file '$bindings_file' is missing. Please reset using `GPI2.use_jll_bindings()` and restart Julia.\nUntil then, GPI2.jl remains inoperable."
-else
-  include(bindings_file)
-  @reexport using .LibGPI2
 end
 
 
