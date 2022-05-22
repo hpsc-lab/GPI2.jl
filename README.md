@@ -14,10 +14,10 @@ operating system](https://julialang.org/downloads/platform/). GPI2.jl works
 with Julia v1.7. Since GPI-2 only works on Linux systems, GPI2.jl is also
 restricted to this platform.
 
-At the time of writing, GPI2.jl is not a registered package. Thus to install it
+GPI2.jl is a registered package. Thus to install it
 in your default environment, execute the following command:
 ```shell
-julia -e 'using Pkg; Pkg.add("https://github.com/hlrs-tasc/GPI2.jl.git")'
+julia -e 'using Pkg; Pkg.add("GPI2.jl")'
 ```
 Alternatively, you can also just clone this repository and then instantiate it,
 i.e., installing all dependencies:
@@ -26,11 +26,12 @@ git clone https://github.com/hlrs-tasc/GPI2.jl.git
 julia --project=GPI2.jl -e 'using Pkg; Pkg.instantiate()'
 ```
 If you decide to use the latter approach with a cloned `GPI2.jl` directory, in
-the following, you need to run all commands from within the cloned folder and
-add `--project=.` to the `julia` command, e.g.,
+the following, you need to add `--project=path/to/GPI2.jl` to the `julia`
+command, e.g.,
 ```shell
 julia --project=. -e 'using GPI2; ...'
 ```
+if you are starting Julia from within the `GPI2.jl` folder.
 
 
 ## Usage
@@ -74,11 +75,10 @@ parallel, execute the following commands in Julia:
 ```shell
 julia -e 'using GPI2; gaspi_run()' -- -m machinefile $(which julia) $(pwd)/examples/hello_world.jl
 ```
-Yes, you need `julia` twice in the command: The first one just executes the `gaspi_run`
-command, while the second one is the command that is executed in parallel. And
-yes, you need the `$(pwd)`s to ensure that the `gaspi_run` does pick the right
-files. If you have not installed GPI2.jl in your default Julia depot, you also
-need to add a `--project="/abs/path/to/GPI2.jl"` argument to each call to Julia.
+You need `julia` twice in the command: The first one just executes the `gaspi_run`
+command, while the second one is the command that is executed in parallel.
+You also need the `$(pwd)` to ensure that `gaspi_run` picks the right
+file.
 
 
 ### Issues when relying on the `module` command
@@ -93,22 +93,21 @@ manually put all relevant changes to the environment variables directly in your
 
 As a workaround, this repository provides two auxiliary utilities:
 [`storeenv.jl`](utils/storeenv.jl) and [`launcher.jl`](utils/launcher.jl). They
-help you to run a GPI-2-powered Julia program on a cluster with the environment
-set up using, e.g., Lmod, by storing the entire environment and reloading it..
+help you to run a GPI-2-powered Julia program on a cluster with an environment
+modules setup by storing the entire environment and reloading it.
 
 First, go to the folder from which you want to start your GASPI-parallelized Julia program
 and execute the `storeenv.jl` script:
 ```shell
-julia --project=path/to/GPI2.jl path/to/storeenv.jl
+julia path/to/storeenv.jl
 ```
-If you installed GPI2.jl as a package instead of just cloning this repo, you
-can also omit the `--project` part. The `storeenv.jl` script will record the
-current environment variables and store them in a file `gaspi-jl-env.toml`.
+The `storeenv.jl` script will record the current environment variables and store
+them in a file `gaspi-jl-env.toml`.
 
 Then, run your Julia program in parallel with the `launcher.jl` script using the
 following command:
 ```shell
-gaspi_run -m <machinefile> $(which julia) /abs/path/to/launcher.jl $(pwd)/gaspi-jl-env.toml path/to/julia/program.jl
+julia -e 'using GPI2; gaspi_run()' -- -m <machinefile> $(which julia) /abs/path/to/launcher.jl $(pwd)/gaspi-jl-env.toml path/to/julia/program.jl
 ```
 The `<machinefile>` is the normal machinefile with all nodes on which to start a
 GASPI rank. The `/abs/path/to/launcher.jl` must be an *absolute* path again. The
