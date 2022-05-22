@@ -1,7 +1,7 @@
 name = "GPI2"
 uuid = "25b41d81-8c24-4365-b92c-8a77f3140560"
 authors = ["Michael Schlottke-Lakemper <michael@sloede.com>"]
-version = "0.1.0"
+version = "0.1.1-pre"
 
 [deps]
 CEnum = "fa961155-64e5-5f13-b03f-caf6b980ea82"
