@@ -71,7 +71,7 @@ provides some example files in the [examples/](examples/) folder you can check
 out to get started.
 
 For example, to run the [`hello_world.jl`](examples/hello_world.jl) example in
-parallel, execute the following commands in Julia:
+parallel, execute the following commands from the GPI2.jl directory:
 ```shell
 julia -e 'using GPI2; gaspi_run()' -- -m machinefile $(which julia) $(pwd)/examples/hello_world.jl
 ```
