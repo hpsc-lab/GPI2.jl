@@ -4,6 +4,7 @@ using GPI2_jll
 using Preferences: load_preference, @set_preferences!
 using Reexport: @reexport
 
+# Export public API
 export gaspi_logger, gaspi_run
 
 # Set defaults
@@ -21,6 +22,7 @@ const gaspi_run_executable = load_preference(GPI2, "gaspi_run_executable", GPI2_
 @static if isabspath(bindings_file) && !isfile(bindings_file)
   @error "Bindings file '$bindings_file' is missing. Please reset using `GPI2.use_jll_bindings()` and restart Julia.\nUntil then, GPI2.jl remains inoperable."
 else
+  # Load bindings file and reexport `gaspi_` and `GASPI_` symbols
   include(bindings_file)
   @reexport using .LibGPI2
 end
