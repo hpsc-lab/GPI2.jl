@@ -34,24 +34,25 @@ gaspi_segment_create(segment_id_dst, segment_size, GASPI_GROUP_ALL, GASPI_BLOCK,
 # Use `Array` instead of `Ref` to allow auto-conversion to `Ptr{Cvoid}`
 src_ptr = Array{Ptr{Cint}, 0}(undef)
 dst_ptr = Array{Ptr{Cint}, 0}(undef)
-# Convert to plain Julia array for convenient access from Julia
-src = unsafe_wrap(Array, src_ptr[], nProc[])
-dst = unsafe_wrap(Array, dst_ptr[], nProc[])
 
 # get initial pointers to each segment
 gaspi_segment_ptr(segment_id_src, src_ptr)
 gaspi_segment_ptr(segment_id_dst, dst_ptr)
 
+# Wrap pointers in plain Julia array for convenient access
+src = unsafe_wrap(Array, src_ptr[], nProc[])
+dst = unsafe_wrap(Array, dst_ptr[], nProc[])
+
 queue_id = gaspi_queue_id_t(0)
 
 for r in 0:(nProc[]-1)
-  src_wrapped[r + 1] = iProc[] * nProc[] + r
+  src[r + 1] = iProc[] * nProc[] + r
 end
 
 # sync
 gaspi_barrier(GASPI_GROUP_ALL, GASPI_BLOCK)
-@show (iProc[], src_wrapped)
-@show (iProc[], dst_wrapped)
+println("BEFORE: iProc=$(iProc[]), src=$src")
+println("BEFORE: iProc=$(iProc[]), dst=$dst")
 
 for rank in 0:(nProc[]-1)
   offset_src = gaspi_offset_t(iProc[] * sizeof(Cint))
@@ -68,8 +69,7 @@ end
 gaspi_wait(queue_id, GASPI_BLOCK)
 
 gaspi_barrier(GASPI_GROUP_ALL, GASPI_BLOCK)
-println("-"^72)
-@show (iProc[], dst_wrapped)
+println("AFTER:  iProc=$(iProc[]), dst=$dst")
 
 gaspi_proc_term(GASPI_BLOCK)
 
