@@ -1,6 +1,7 @@
 # GPI2.jl
 
 [![Build Status](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/hlrs-tasc/GPI2.jl/badge.svg?branch=main)](https://coveralls.io/github/hlrs-tasc/GPI2.jl?branch=main)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
 

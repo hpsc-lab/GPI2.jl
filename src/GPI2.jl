@@ -6,11 +6,15 @@ using Reexport: @reexport
 
 export gaspi_logger, gaspi_run
 
+# Set defaults
+const default_bindings_file = "../bindings/LibGPI2_jll.jl"
+const default_libGPI2 = GPI2_jll.libGPI2
+
 # Use preferences for library paths
-const libGPI2 = load_preference(GPI2, "libGPI2", GPI2_jll.libGPI2)
+const libGPI2 = load_preference(GPI2, "libGPI2", default_libGPI2)
+const bindings_file = load_preference(GPI2, "bindings_file", default_bindings_file)
 const gaspi_logger_executable = load_preference(GPI2, "gaspi_logger_executable", GPI2_jll.gaspi_logger_path)
 const gaspi_run_executable = load_preference(GPI2, "gaspi_run_executable", GPI2_jll.gaspi_run_path)
-const bindings_file = load_preference(GPI2, "bindings_file", "LibGPI2.jl")
 
 
 # If the bindings file is not referring to the package-provided file, check for its existence
@@ -28,7 +32,7 @@ end
 Configure GPI2.jl to use `libGPI2.so` binary provided by the JLL package.
 """
 function use_jll_library()
-  @set_preferences!("libGPI2" => GPI2_jll.libGPI2)
+  @set_preferences!("libGPI2" => default_libGPI2)
   @info "Using JLL-provided GPI-2 library. Please restart Julia for the change to take effect."
 end
 
@@ -56,7 +60,7 @@ end
 Configure GPI2.jl to use the C bindings file provided by the JLL package.
 """
 function use_jll_bindings()
-  @set_preferences!("bindings_file" => "LibGPI2.jl")
+  @set_preferences!("bindings_file" => default_bindings_file)
   @info "Using JLL-compatible C bindings. Please restart Julia for the change to take effect."
 end
 

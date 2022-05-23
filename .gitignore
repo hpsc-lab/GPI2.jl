@@ -2,3 +2,9 @@ Manifest.toml
 LocalPreferences.toml
 gpi2-jl-env.toml
 machinefile
+docs/build/
+coverage/
+coverage_report/
+**/*.jl.*.cov
+public/
+*.mem
