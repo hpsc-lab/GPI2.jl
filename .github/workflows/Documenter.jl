@@ -18,6 +18,7 @@ on:
 
 jobs:
   build:
+    name: Build documentation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
