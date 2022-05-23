@@ -126,9 +126,9 @@ available in the GPI2\_jll.jl package. This is only recommended for
 non-performance critical usage and/or development. To switch to a
 library installed on your system, execute
 ```julia
-julia -e 'using GPI2; GPI2.use_system_library("/path/to/libGPI2.so")'
+julia -e 'using GPI2; GPI2.use_system_library("path/to/libGPI2.so")'
 ```
-where `/path/to/libGPI.so` should be the path to your *shared* GPI-2 library.
+where `path/to/libGPI.so` should be the path to your *shared* GPI-2 library.
 To switch back to using the JLL-provided library, execute
 ```julia
 julia -e 'using GPI2; GPI2.use_jll_library()'

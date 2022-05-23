@@ -37,6 +37,9 @@ end
     use_system_library(path)
 
 Configure GPI2.jl to use `libGPI2.so` binary provided on the local system at `path`.
+
+!!! warning "Experimental implementation"
+    This is an experimental feature and may change in future releases.
 """
 function use_system_library(path)
   if !isfile(path)
@@ -62,6 +65,9 @@ end
     use_system_bindings(path)
 
 Configure GPI2.jl to use the C bindings file provided on the local system at `path`.
+
+!!! warning "Experimental implementation"
+    This is an experimental feature and may change in future releases.
 """
 function use_system_bindings(path)
   if !isfile(path)
