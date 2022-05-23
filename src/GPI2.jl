@@ -22,12 +22,22 @@ else
 end
 
 
+"""
+    use_jll_library()
+
+Configure GPI2.jl to use `libGPI2.so` binary provided by the JLL package.
+"""
 function use_jll_library()
   @set_preferences!("libGPI2" => GPI2_jll.libGPI2)
   @info "Using JLL-provided GPI-2 library. Please restart Julia for the change to take effect."
 end
 
 
+"""
+    use_system_library(path)
+
+Configure GPI2.jl to use `libGPI2.so` binary provided on the local system at `path`.
+"""
 function use_system_library(path)
   if !isfile(path)
     error("'$path' is not a valid file")
@@ -37,12 +47,22 @@ function use_system_library(path)
 end
 
 
+"""
+    use_jll_bindings()
+
+Configure GPI2.jl to use the C bindings file provided by the JLL package.
+"""
 function use_jll_bindings()
   @set_preferences!("bindings_file" => "LibGPI2.jl")
   @info "Using JLL-compatible C bindings. Please restart Julia for the change to take effect."
 end
 
 
+"""
+    use_system_bindings(path)
+
+Configure GPI2.jl to use the C bindings file provided on the local system at `path`.
+"""
 function use_system_bindings(path)
   if !isfile(path)
     error("'$path' is not a valid file")
