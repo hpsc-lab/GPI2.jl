@@ -8,3 +8,4 @@ coverage_report/
 **/*.jl.*.cov
 public/
 *.mem
+bindings/LibGPI2.jl
