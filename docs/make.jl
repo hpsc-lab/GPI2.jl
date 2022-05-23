@@ -27,7 +27,7 @@ makedocs(
         "License" => "license.md"
     ],
     # strict = true # to make the GitHub action fail when doctests fail
-    strict = Documenter.except(:missing_docs)
+    strict = Documenter.except(:cross_references)
 )
 
 deploydocs(
