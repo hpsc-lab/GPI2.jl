@@ -1,5 +1,8 @@
 # GPI2.jl
 
+[![Docs-stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://hlrs-tasc.github.io/GPI2.jl/stable)
+[![Docs-dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://hlrs-tasc.github.io/GPI2.jl/dev)
+[![Build Status](https://github.com/klimakoffer/Klimakoffer.jl/workflows/CI/badge.svg)](https://github.com/klimakoffer/Klimakoffer.jl/actions?query=workflow%3ACI)
 [![Build Status](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/hlrs-tasc/GPI2.jl/badge.svg?branch=main)](https://coveralls.io/github/hlrs-tasc/GPI2.jl?branch=main)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
