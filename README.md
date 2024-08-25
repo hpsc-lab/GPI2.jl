@@ -1,10 +1,10 @@
 # GPI2.jl
 
-[![Docs-stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://hlrs-tasc.github.io/GPI2.jl/stable)
-[![Docs-dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://hlrs-tasc.github.io/GPI2.jl/dev)
+[![Docs-stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://hpsc-lab.github.io/GPI2.jl/stable)
+[![Docs-dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://hpsc-lab.github.io/GPI2.jl/dev)
 [![Build Status](https://github.com/klimakoffer/Klimakoffer.jl/workflows/CI/badge.svg)](https://github.com/klimakoffer/Klimakoffer.jl/actions?query=workflow%3ACI)
-[![Build Status](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/hlrs-tasc/GPI2.jl/actions/workflows/ci.yml)
-[![Coverage Status](https://coveralls.io/repos/github/hlrs-tasc/GPI2.jl/badge.svg?branch=main)](https://coveralls.io/github/hlrs-tasc/GPI2.jl?branch=main)
+[![Build Status](https://github.com/hpsc-lab/GPI2.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/hpsc-lab/GPI2.jl/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/hpsc-lab/GPI2.jl/badge.svg?branch=main)](https://coveralls.io/github/hpsc-lab/GPI2.jl?branch=main)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
 
 
@@ -26,7 +26,7 @@ julia -e 'using Pkg; Pkg.add("GPI2.jl")'
 Alternatively, you can also just clone this repository and then instantiate it,
 i.e., installing all dependencies:
 ```shell
-git clone https://github.com/hlrs-tasc/GPI2.jl.git
+git clone https://github.com/hpsc-lab/GPI2.jl.git
 julia --project=GPI2.jl -e 'using Pkg; Pkg.instantiate()'
 ```
 If you decide to use the latter approach with a cloned `GPI2.jl` directory, in
@@ -166,8 +166,8 @@ effect.
 
 ## Authors
 GPI2.jl is maintained by
-[Michael Schlottke-Lakemper](https://www.hlrs.de/about-us/organization/divisions-departments/av/tasc/)
-(University of Stuttgart, Germany). The GPI-2 library itself is developed by the
+[Michael Schlottke-Lakemper](https://lakemper.eu)
+(University of Augsburg, Germany). The GPI-2 library itself is developed by the
 [Fraunhofer Institute for Industrial Mathematics (ITWM)](https://www.itwm.fraunhofer.de/).
 
 
